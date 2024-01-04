@@ -22,11 +22,9 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book findBook(@PathVariable long id) {
-        return this.bookService.findBook(id).orElseThrow(() -> {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "entity not found"
-            );
-        });
+        return this.bookService.findBook(id).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "entity not found"
+        ));
     }
 
     @PutMapping("")
